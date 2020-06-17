@@ -173,7 +173,7 @@ public class Bank {
     // This is the static class variable that is applied to all BankAccounts
     public static void getInterestRate() {
     
-        System.out.println("Program stub: getInterestRate()");
+        System.out.println("\tThe current interest rate is " + BankAccount.getInterestRate() + " (or " + (BankAccount.getInterestRate()*100) + "%)");
 
     }
 
@@ -181,14 +181,32 @@ public class Bank {
     // This is a static reference to 'interestRate' that applies to all BankAccounts
     public static void setInterestRate(Scanner scanner) {
     
-        System.out.println("Program stub: setInterestRate()");
+        System.out.println("The interest rate is " + BankAccount.getInterestRate() + " (or " + (BankAccount.getInterestRate()*100) + "%)");
+        System.out.print("What should the new rate be (enter as a decimal)? ");
+        double newRate = scanner.nextDouble();
+
+        BankAccount.setInterestRate(newRate);
+
+        System.out.println();
+        System.out.println("\tThe rate has been changed to " + BankAccount.getInterestRate() + " (or " + (BankAccount.getInterestRate()*100) + "%)");
         
     }
 
     // Walk through every BankAccount in 'accounts' and adjust the balance appropriately
     public static void applyInterest(ArrayList<BankAccount> accounts) {
     
-        System.out.println("Program stub: applyInterest()");
+        for (int i = 0; i < accounts.size(); i++) {
+            System.out.println("Account " + accounts.get(i).getAccountNumber() + " has a balance of " + accounts.get(i).getBalance());
+
+
+            double currentBalance = accounts.get(i).getBalance();
+            double interest = BankAccount.getInterestRate();
+
+            accounts.get(i).setBalance(currentBalance + (interest * 100));
+            System.out.println("Account " + accounts.get(i).getAccountNumber() + " has a new balance of " + accounts.get(i).getBalance());
+            System.out.println();
+        }
+
 
     }
 }

@@ -83,11 +83,11 @@ public class ShapeManager {
         // This line of code is so you do not have to count the dashes :)
         System.out.println("-------------------------------");
         for (int i = 0; i < circles.size(); i++) {
-        System.out.println(circles.get(i).getName() + " " + circles.get(i).getNumber());
-        System.out.println("\tThe diameter is: " + (circles.get(i).diameter()));
-        System.out.println("\tThe area is: " + (circles.get(i).area()));
-        System.out.println("\tThe circumference is: " + (circles.get(i).circumference()));
-        System.out.println();
+            System.out.println(circles.get(i).getName() + " " + circles.get(i).getNumber());
+            System.out.println("\tThe diameter is: " + (circles.get(i).diameter()));
+            System.out.println("\tThe area is: " + (circles.get(i).area()));
+            System.out.println("\tThe circumference is: " + (circles.get(i).circumference()));
+            System.out.println();
         }
 
         System.out.println("-------------------------------");
