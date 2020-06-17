@@ -81,32 +81,91 @@ public class Bank {
         System.out.println();
 
         System.out.println("\tThe account has been added.");
-        System.out.println("\t" + accounts.get(accounts.size()-1).getName() + " has $" + accounts.get(accounts.size()-1).getBalance() + " and account number " + accounts.get(accounts.size()-1).getAccountNumber() );
+        System.out.println("\t" + accounts.get(accounts.size()-1).getName() + " has $" + accounts.get(accounts.size()-1).getBalance() + " and account number #" + accounts.get(accounts.size()-1).getAccountNumber() );
     }
 
     // Implicitly calls the toString() method on a specified account
     public static void checkStatus(ArrayList<BankAccount> accounts, Scanner scanner) {
         
-        System.out.println("Program stub: checkStatus()");
+        System.out.print("Please choose an account number between 1000 and " + accounts.get(accounts.size()-1).getAccountNumber() + ": ");
+        int accountNumber = scanner.nextInt();
+
+        System.out.println();
+
+        int index = accounts.indexOf(accountNumber);
+
+        System.out.println("\t" + accounts.get(index + 1).getName() + " has $" + accounts.get(index + 1).getBalance() + " and account number #" + accounts.get(index + 1).getAccountNumber() );
+
+
         
     }
 
     public static void changeAccountHolderName(ArrayList<BankAccount> accounts, Scanner scanner) {
         
-        System.out.println("Program stub: changeAccountHolderName()");
+        System.out.print("Please choose an account number between 1000 and " + accounts.get(accounts.size()-1).getAccountNumber() + ": ");
+        int accountNumber = scanner.nextInt();
+        
+        int index = accounts.indexOf(accountNumber);
+
+        System.out.println();
+
+        System.out.println("The name is " + accounts.get(index + 1).getName());
+        System.out.print("What would you like to change the name to? ");
+        scanner.nextLine();
+        String newName = scanner.nextLine();
+
+        accounts.get(index +1).setName(newName);
+
+        System.out.println();
+        System.out.println();
+        System.out.println("\tThe name has been changed.");
+        System.out.println("\t" + accounts.get(index + 1).getName() + " has $" + accounts.get(index + 1).getBalance() + " and account number #" + accounts.get(index + 1).getAccountNumber() );
       
     }
 
     // Adds a specified value to the instance variable 'balance' of a specified account
     public static void deposit(ArrayList<BankAccount> accounts, Scanner scanner) {
         
-        System.out.println("Program stub: deposit()");
+        System.out.print("Please choose an account number between 1000 and " + accounts.get(accounts.size()-1).getAccountNumber() + ": ");
+        int accountNumber = scanner.nextInt();
+        
+        int index = accounts.indexOf(accountNumber);
+
+        System.out.println();
+
+        System.out.println("The current name is " + accounts.get(index + 1).getName());
+        System.out.print("How much would you like to deposit? $");
+        double deposit = scanner.nextDouble();
+
+        double currentBalance = accounts.get(index + 1).getBalance();
+        accounts.get(index +1).setBalance(currentBalance + deposit);
+
+        System.out.println("The balance for account number " + accounts.get(accounts.size()-1).getAccountNumber() + " is $" + accounts.get(index + 1).getBalance());
+        System.out.println();
+        System.out.println("\t" + accounts.get(index + 1).getName() + " has $" + accounts.get(index + 1).getBalance() + " and account number #" + accounts.get(index + 1).getAccountNumber() );
        
     }
 
     public static void withdraw(ArrayList<BankAccount> accounts, Scanner scanner) {
         
-        System.out.println("Program stub: withdraw()");
+        System.out.print("Please choose an account number between 1000 and " + accounts.get(accounts.size()-1).getAccountNumber() + ": ");
+        int accountNumber = scanner.nextInt();
+        
+        int index = accounts.indexOf(accountNumber);
+
+        System.out.println();
+
+        System.out.println("The current name is " + accounts.get(index + 1).getName());
+        System.out.print("How much would you like to withdraw? $");
+        double withdraw = scanner.nextDouble();
+
+        double currentBalance = accounts.get(index + 1).getBalance();
+        accounts.get(index +1).setBalance(currentBalance - withdraw);
+
+        System.out.println("The balance for account number " + accounts.get(accounts.size()-1).getAccountNumber() + " is $" + accounts.get(index + 1).getBalance());
+        System.out.println();
+        System.out.println("\t" + accounts.get(index + 1).getName() + " has $" + accounts.get(index + 1).getBalance() + " and account number #" + accounts.get(index + 1).getAccountNumber() );
+       
 
     }
     
