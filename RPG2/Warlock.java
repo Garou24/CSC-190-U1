@@ -15,4 +15,8 @@ public class Warlock extends Character {
     
 
 
+    public double attack() {
+        System.out.println(name + "  attacks!");
+        return -1;
+    }
 }
