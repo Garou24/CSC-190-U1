@@ -18,6 +18,7 @@ public class RPG2 {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
+        ArrayList<Character> playerRoster = new ArrayList<Character>();
         ArrayList<Character> character = new ArrayList<Character>();
         
         character.add(new Character("Stanwyck", 5, 5, 10, 0));
@@ -115,17 +116,18 @@ public class RPG2 {
 
         }
 
-        character.add(new Character(name, defense, strength, special, currentStatPoints));
-
         if (classSelect == 1) {
           String className = "Warlock";
           character.get(character.size()-1).setClassName(className);
+          character.add(new Warlock(name, defense, strength, special, currentStatPoints));
         } else if (classSelect == 2) {
           String className = "Druid";
           character.get(character.size()-1).setClassName(className);
+          character.add(new Druid(name, defense, strength, special, currentStatPoints));
         } else if (classSelect == 3) {
           String className = "Paladin";
           character.get(character.size()-1).setClassName(className);
+          character.add(new Paladin(name, defense, strength, special, currentStatPoints));
         }
 
         System.out.println("You have created " + name + ".");
@@ -159,10 +161,10 @@ public class RPG2 {
 
     }
 
-    public static void duel(ArrayList<Battle> playerRoster, Scanner scanner) {
+    public static void duel(ArrayList<Character> character, Scanner scanner) {
         System.out.println("Select a character from the list below to start a duel.");
-        for (int i = 0; i < playerRoster.size(); i++) {
-            System.out.println("\t" + (i) + ": " + playerRoster.get(i).getName());
+        for (int i = 0; i < character.size(); i++) {
+            System.out.println("\t" + (i) + ": " + character.get(i).getName());
         }
 
         System.out.print("Select your first character: ");
@@ -173,7 +175,7 @@ public class RPG2 {
         int char2 = scanner.nextInt();
         System.out.println();
 
-        playerRoster.get(char1).Battle(playerRoster.get(char2));
+        character.get(char1).battle(character.get(char2));
 
     }
 
