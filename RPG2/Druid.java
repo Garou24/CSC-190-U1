@@ -179,17 +179,18 @@ public class Druid extends Character {
     }
 
     public double attack() {
-        double basicAttack = (Math.random() * 8 + (strength + 1));
+        int basicAttack = (getStrength() + (getSpecial() / 2)); //Druids gain half their special as an attack bonus
         return basicAttack;
     }
     
     public double defend() {
-        double armor = getDefense() + 2;
+        double armor = (getDefense() + (getSpecial() / 2)); //Druids gain half their special as a defensive bonus
         return armor;
     }
     
-    public void specialEffect() {
-        System.out.println(name + "  implements SPECIAL!");
+    public void specialEffect() { //Druids can increase their special stat which will increase both their attack and defense
+        int currentSpecial = getSpecial();
+        setSpecial(currentSpecial + 8);
     }
 
 

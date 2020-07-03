@@ -179,7 +179,7 @@ public class Warlock extends Character {
     }
 
     public double attack() {
-        double basicAttack = (Math.random() * 6 + (strength + 1));
+        int basicAttack = getStrength() + getSpecial(); //To show their magical capabilities, Warlocks add their special stat to their strength when attacking.
         //double leach = (basicAttack / 3);
         //double currentHP = getCurrentHealth();
         //setCurrentHealth(cuttentHP + leach);
@@ -188,12 +188,16 @@ public class Warlock extends Character {
     }
     
     public double defend() {
-        double armor = getDefense() - 2;
+        double armor = getDefense(); //Warlocks gain no bonus to their defense to balance their offensive capabilities.
         return armor;
     }
     
-    public void specialEffect() {
-        System.out.println(name + "  implements SPECIAL!");
+    public void specialEffect() { //Warlocks can use their special ability to sacrifice their defense to regain or increase their health.
+        if (getDefense() > 0) {
+            setDefense(0);
+            setCurrentHealth(currentHealth + 50);
+        }
+
     }
 
 

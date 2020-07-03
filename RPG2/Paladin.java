@@ -23,6 +23,8 @@ public class Paladin extends Character {
     private int[] myStats = new int[5]; //    [currentHealth, strength, defense, special, points]
     private int[] oppInfo; //    [currentHealth, strength, defense, special, points]
 
+    private boolean layHands = false;
+
     // Constructors
     public Paladin() {
         name = "";
@@ -179,17 +181,23 @@ public class Paladin extends Character {
     }
 
     public double attack() {
-        double basicAttack = (Math.random() * 10 + (strength + 1));
+        int basicAttack = getStrength(); //Paladins use just their base strength for their attacks.
+
         return basicAttack;
     }
     
     public double defend() {
-        double armor = getDefense() + 4;
+        double armor = getDefense() + getSpecial(); //Paladins are more defensive and add their special to their defense.
         return armor;
     }
     
-    public void specialEffect() {
-        System.out.println(name + "  implements SPECIAL!");
+    public void specialEffect() { //Paladins can boost their defense and gain extra health once per battle
+        if (layHands = false) {
+            setDefense(getDefense() + 4);
+            int currentHp = getCurrentHealth();
+            setCurrentHealth(currentHp + 25);
+            layHands = true;
+        }
     }
 
 

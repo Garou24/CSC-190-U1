@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class RPG2 {
 
-  public final static boolean DEBUG = false;
+  public final static boolean DEBUG = true;
     public static void main (String[] args) {
 
         Character.setDebug(DEBUG);
