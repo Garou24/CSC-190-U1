@@ -182,13 +182,13 @@ public class Warlock extends Character {
         double basicAttack = (Math.random() * 6 + (strength + 1));
         //double leach = (basicAttack / 3);
         //double currentHP = getCurrentHealth();
-        //setCurrentHealth(leach);
+        //setCurrentHealth(cuttentHP + leach);
 
         return basicAttack;
     }
     
     public double defend() {
-        double armor = getDefense();
+        double armor = getDefense() - 2;
         return armor;
     }
     

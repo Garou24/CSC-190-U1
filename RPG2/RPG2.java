@@ -18,13 +18,8 @@ public class RPG2 {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
-        ArrayList<Character> playerRoster = new ArrayList<Character>();
         ArrayList<Character> character = new ArrayList<Character>();
         
-        character.add(new Character("Stanwyck", 5, 5, 10, 0));
-        character.add(new Character("Mindy", 10, 5, 5, 0));
-
-
         while (true) {
             
             displayMenu();
@@ -75,15 +70,15 @@ public class RPG2 {
         System.out.println();
 
         System.out.println("You have a total of " + currentStatPoints + " points remaining to spend on your character.");
-        System.out.print("Enter the Defense for your character. Select a number between 1 and " + currentStatPoints + ": ");
-        int defense = scanner.nextInt();
-        currentStatPoints = currentStatPoints - defense;
-        System.out.println();
-
-        System.out.println("You have a total of " + currentStatPoints + " points remaining to spend on your character.");
         System.out.print("Enter the Strength of your character. Select a number between 1 and " + currentStatPoints + ": ");
         int strength = scanner.nextInt();
         currentStatPoints = currentStatPoints - strength;
+        System.out.println();
+
+        System.out.println("You have a total of " + currentStatPoints + " points remaining to spend on your character.");
+        System.out.print("Enter the Defense for your character. Select a number between 1 and " + currentStatPoints + ": ");
+        int defense = scanner.nextInt();
+        currentStatPoints = currentStatPoints - defense;
         System.out.println();
 
         System.out.println("You have a total of " + currentStatPoints + " points remaining to spend on your character.");
@@ -118,16 +113,16 @@ public class RPG2 {
 
         if (classSelect == 1) {
           String className = "Warlock";
-          character.get(character.size()-1).setClassName(className);
           character.add(new Warlock(name, defense, strength, special, currentStatPoints));
+          character.get(character.size()-1).setClassName(className);
         } else if (classSelect == 2) {
           String className = "Druid";
+          character.add(new Warlock(name, defense, strength, special, currentStatPoints));
           character.get(character.size()-1).setClassName(className);
-          character.add(new Druid(name, defense, strength, special, currentStatPoints));
         } else if (classSelect == 3) {
           String className = "Paladin";
+          character.add(new Warlock(name, defense, strength, special, currentStatPoints));
           character.get(character.size()-1).setClassName(className);
-          character.add(new Paladin(name, defense, strength, special, currentStatPoints));
         }
 
         System.out.println("You have created " + name + ".");
@@ -175,7 +170,8 @@ public class RPG2 {
         int char2 = scanner.nextInt();
         System.out.println();
 
-        character.get(char1).battle(character.get(char2));
+        Battle battle = new Battle(character.get(char1), character.get(char2));
+        battle.superSmash();
 
     }
 

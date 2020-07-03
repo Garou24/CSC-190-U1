@@ -16,7 +16,7 @@ public class Paladin extends Character {
     private int wins;
     private int losses;
 
-    public static String classDescription = "Paladin - A well armored melee fighter who can use powerful blessings and heal themselves.\nPaladins have a bonus to their defense and have a one time use heal.";
+    public static String classDescription = "Paladin - A well armored melee fighter who can use powerful blessings and heal themselves.\n\tPaladins have a bonus to their defense and have a one time use heal.";
 
     private static boolean debug = true; // Will be changed to false during official battle
 
@@ -179,13 +179,13 @@ public class Paladin extends Character {
     }
 
     public double attack() {
-        System.out.println(name + "  attacks!");
-        return -1;
+        double basicAttack = (Math.random() * 10 + (strength + 1));
+        return basicAttack;
     }
     
     public double defend() {
-        System.out.println(name + "  defends!");
-        return -1;
+        double armor = getDefense() + 4;
+        return armor;
     }
     
     public void specialEffect() {

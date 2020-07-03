@@ -16,7 +16,7 @@ public class Druid extends Character {
     private int wins;
     private int losses;
 
-    public static String classDescription = "Druid - Your spells allow you to command the elements of Nature to damage your enemies and protect yourself.\nCast spells that damage opponents over time and retaliate against incoming damage.";
+    public static String classDescription = "Druid - Your spells allow you to command the elements of Nature to damage your enemies and protect yourself.\n\tCast spells that damage opponents over time and retaliate against incoming damage.";
 
     private static boolean debug = true; // Will be changed to false during official battle
 
@@ -179,13 +179,13 @@ public class Druid extends Character {
     }
 
     public double attack() {
-        System.out.println(name + "  attacks!");
-        return -1;
+        double basicAttack = (Math.random() * 8 + (strength + 1));
+        return basicAttack;
     }
     
     public double defend() {
-        System.out.println(name + "  defends!");
-        return -1;
+        double armor = getDefense() + 2;
+        return armor;
     }
     
     public void specialEffect() {
